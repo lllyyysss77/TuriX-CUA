@@ -29,7 +29,6 @@ from PIL import Image, ImageDraw, ImageFont
 from pydantic import BaseModel, ValidationError
 from src.agent.message_manager.service import MessageManager
 from src.agent.prompts import (
-    SystemPrompt_turix,
     BrainPrompt_turix,
     ActorPrompt_turix,
     SystemPrompt,
@@ -105,16 +104,15 @@ class Agent:
     def __init__(
         self,
         task: str,
-        llm: BaseChatModel,
+        brain_llm: BaseChatModel,
+        actor_llm: BaseChatModel,
         short_memory_len : int,
         controller: Controller = Controller(),
         use_ui = False,
-        use_turix: bool = True,
         save_conversation_path: Optional[str] = None,
         save_conversation_path_encoding: Optional[str] = 'utf-8',
         max_failures: int = 5,
         retry_delay: int = 10,
-        system_prompt_class: Type[SystemPrompt] = SystemPrompt,
         max_input_tokens: int = 32000,
         resume = False,
         include_attributes: list[str] = [
@@ -137,13 +135,12 @@ class Agent:
         tool_calling_method: Optional[str] = 'auto',
         agent_id: Optional[str] = None,
     ):
-        self.current_time = datetime.now()
         self.wait_this_step = False
         self.agent_id = agent_id or str(uuid.uuid4())
         self.task = task
         self.resume = resume
-        self.llm = to_structured(llm, OutputSchemas.AGENT_RESPONSE_FORMAT, AgentStepOutput)
-        self.use_turix = use_turix
+        self.brain_llm = to_structured(brain_llm, OutputSchemas.BRAIN_RESPONSE_FORMAT, BrainOutput)
+        self.actor_llm = to_structured(actor_llm, OutputSchemas.ACTION_RESPONSE_FORMAT, ActorOutput)
 
         self.save_conversation_path = save_conversation_path
         self.save_conversation_path_encoding = save_conversation_path_encoding
@@ -163,15 +160,10 @@ class Agent:
         self.goal_action_memory = OrderedDict()
 
         self.last_goal = None
-        if not self.use_turix:
-            self.system_prompt_class = system_prompt_class
-        else:
-            self.system_prompt_class = SystemPrompt_turix
         self.state_memory = OrderedDict()
         self.status = "success"
         # Setup dynamic Action Model
         self._setup_action_models()
-
         self._set_model_names()
 
         self.tool_calling_method = self.set_tool_calling_method(tool_calling_method)
@@ -562,7 +554,8 @@ class Agent:
                 if not await self._handle_control_flags():
                     break
 
-                await self.step()
+                await self.brain_step()
+                await self.actor_step()
 
                 if self.history.is_done():
                     logger.info('✅ Task completed successfully')
@@ -603,16 +596,6 @@ class Agent:
         self.history.save_to_file(file_path)
 
     def initiate_messages(self):
-        self.agent_message_manager = MessageManager(
-            llm=self.llm,
-            task=self.task,
-            action_descriptions=self.controller.registry.get_prompt_description(),
-            system_prompt_class=self.system_prompt_class,  # Typically your SystemPrompt
-            max_input_tokens=self.max_input_tokens,
-            include_attributes=self.include_attributes,
-            max_error_length=self.max_error_length,
-            max_actions_per_step=self.max_actions_per_step,
-        )
         self.brain_message_manager = MessageManager(
             llm=self.brain_llm,
             task=self.task,
@@ -627,7 +610,7 @@ class Agent:
             llm=self.actor_llm,
             task=self.task,
             action_descriptions=self.controller.registry.get_prompt_description(),
-            system_prompt_class=ActorPrompt_turix, # Adjust if needed for action-specific prompt
+            system_prompt_class=ActorPrompt_turix, # Typically your SystemPrompt
             max_input_tokens=self.max_input_tokens,
             include_attributes=self.include_attributes,
             max_error_length=self.max_error_length,

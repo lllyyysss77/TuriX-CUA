@@ -1,31 +1,11 @@
-# output_schemas.py
-from typing import Any, Dict
-
 class OutputSchemas:
     """
     A container for all model output schemas and their associated response formats.
     """
 
-# Example: output_schemas.py
-
-    AGENT_SCHEMA = {
+    ACTION_SCHEMA = {
         "type": "object",
         "properties": {
-
-            "current_state": {
-                "type": "object",
-                "properties": {
-                    "evaluation_previous_goal": {"type": "string"},
-                    "next_goal": {"type": "string"},
-                    "information_stored": {"type": "string"}
-                },
-                "required": [
-                    "evaluation_previous_goal",
-                    "next_goal",
-                    "information_stored"
-                ]
-            },
-
             "action": {
                 "type": "array",
                 "minItems": 0,
@@ -140,19 +120,57 @@ class OutputSchemas:
                 },
 
                     }
-                }
+                },
+
         },
         "required": [
-            "action",
-            "current_state"
+            "action"
         ]
     }
 
-    AGENT_RESPONSE_FORMAT = {
+    ACTION_RESPONSE_FORMAT = {
         "type": "json_schema",
         "json_schema": {
-            "name": "agent_step_output",
+            "name": "agent_action_output",
             "strict": True,
-            "schema": AGENT_SCHEMA
+            "schema": ACTION_SCHEMA
+        }
+    }
+
+    BRAIN_SCHEMA = {
+        "type": "object",
+        "properties": {
+            "analysis": {
+                "type": "object",
+                "properties": {
+                    "analyzation": {"type": "string"}
+                },
+                "required": ["analyzation"]
+            },
+            "current_state": {
+                "type": "object",
+                "properties": {
+                    "step_evaluate": {"type": "string"},
+                    "ask_for_help": {"type": "string"},
+                    "ask_user": {"type": "string"},
+                    "next_goal": {"type": "string"}
+                },
+                "required": [
+                    "step_evaluate",
+                    "ask_for_help",
+                    "ask_user",
+                    "next_goal",
+                ]
+            },
+        },
+        "required": ["analysis","current_state"]
+    }
+
+    BRAIN_RESPONSE_FORMAT = {
+        "type": "json_schema",
+        "json_schema": {
+            "name": "agent_state_output",
+            "strict": True,
+            "schema": BRAIN_SCHEMA
         }
     }

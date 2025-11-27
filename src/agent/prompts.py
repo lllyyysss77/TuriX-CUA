@@ -36,7 +36,6 @@ class SystemPrompt:
 
     def get_system_message(self) -> SystemMessage:
         # Current date: {self.current_date.strftime('%Y-%m-%d')}
-        screen_size = pyautogui.size()
         return SystemMessage(
             content=f"""
             SYSTEM PROMPT FOR AGENT
@@ -142,7 +141,7 @@ class BrainPrompt_turix:
 content=f"""
 SYSTEM PROMPT FOR BRAIN MODEL:
 === GLOBAL INSTRUCTIONS ===
-- Environment: macOS 15.3.
+- Environment: macOS. Current time is {self.current_time}.
 - You will receive an overall plan for completing a task and a JSON input from previous step which contains the short and long memory of previous actions and your overall plan, you will also receive images information.
 - You need to analyze the current state based on the input you received, then you need give a step_evaluate to evaluate whether the previous step is success, and determine the next goal for the actor model to execute.
 - You can only ask the actor model to use the apps that are already installed in the computer, {apps_message}
@@ -200,7 +199,7 @@ class ActorPrompt_turix:
             content=f"""
 SYSTEM PROMPT FOR ACTION MODEL:
 === GLOBAL INSTRUCTIONS ===
-- Environment: macOS 15.3.
+- Environment: macOS. Current time is {self.current_time}.
 - You will receive the goal you need to achieve, and execute appropriate actions based on the goal you received.
 - You can only open the apps that are already installed in the computer, {apps_message}
 - All the coordinates are normalized to 0-1000. You MUST output normalized positions.

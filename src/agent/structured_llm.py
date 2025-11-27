@@ -44,24 +44,52 @@ class ActionItem(BaseModel):
 # CURRENT‑STATE SUB‑MODEL
 # ---------------------------------------------------------------------------
 
+class Analysis(BaseModel):
+    analyzation: str = Field(..., description="Detailed analysis of how the current state matches the expected state.")
+
 class CurrentState(BaseModel):
-    evaluation_previous_goal: str = Field(..., description="Success/Failed (From evaluator)")
+    evaluation_previous_goal: str = Field(..., description="Success/Failed (based on step completion)")
+    ask_for_help: str = Field(..., description="Yes/No (Yes if agent is stuck in a loop or replan is needed)")
+    ask_user: str = Field(..., description="Describe what you want user to do or No (No if nothing to ask for comfirmation. If something is unclear, ask the user for confirmation, like ask the user to login, or comfirm preference.)")
     next_goal: str = Field(..., description="Goal of this step based on actions, ONLY DESCRIBE THE EXPECTED ACTIONS RESULT OF THIS STEP")
-    information_stored: str = Field(..., description="Accumulated important information, add continuously, else 'None'")
 
 
 # ---------------------------------------------------------------------------
 # AGENT STEP OUTPUT (MAIN MODEL)
 # ---------------------------------------------------------------------------
 
-class AgentStepOutput(BaseModel):
+class BrainOutput(BaseModel):
     """Schema for the agent's per‑step output.
 
     - ``action``: list of actions the agent should perform in order. Multiple actions
       are allowed in a single step.
     - ``current_state``: diagnostic information that supervisors/evaluators can use.
     """
+    analysis: Analysis
     current_state: CurrentState
+
+    def __repr__(self) -> str:
+        non_none = self.model_dump(exclude_none=True)
+        field_strs = ", ".join(f"{k}={v!r}" for k, v in non_none.items())
+        return f"{self.__class__.__name__}({field_strs})"
+
+    @property
+    def content(self) -> str:
+        """
+        Returns a JSON-formatted string representation of the instance,
+        allowing access via the `.content` attribute.
+        """
+        return self.model_dump_json(exclude_none=True, exclude_unset=True)
+
+    @property
+    def parsed(self) -> Dict[str, Any]:
+        """
+        Returns the dictionary representation of the instance,
+        facilitating direct access to structured data.
+        """
+        return self.model_dump(exclude_none=True, exclude_unset=True)
+
+class ActorOutput(BaseModel):
     action: List[ActionItem] = Field(
         ...,
         min_items=0,
@@ -92,5 +120,6 @@ class AgentStepOutput(BaseModel):
 
 
 __all__ = [
-    "AgentStepOutput"
+    "BrainOutput",
+    "ActorOutput",
 ]
