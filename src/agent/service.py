@@ -108,6 +108,7 @@ class Agent:
         controller: Controller = Controller(),
         use_ui = False,
         use_turix: bool = True,
+        planner_llm: Optional[BaseChatModel] = None,
         save_conversation_path: Optional[str] = None,
         save_conversation_path_encoding: Optional[str] = 'utf-8',
         max_failures: int = 5,
@@ -140,6 +141,7 @@ class Agent:
         self.agent_id = agent_id or str(uuid.uuid4())
         self.task = task
         self.resume = resume
+        self.planner_llm = to_structured(planner_llm, OutputSchemas.PLANNER_RESPONSE_FORMAT, PlannerOutput)
         self.llm = to_structured(llm, OutputSchemas.AGENT_RESPONSE_FORMAT, AgentStepOutput)
         self.use_turix = use_turix
 
