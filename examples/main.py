@@ -112,13 +112,15 @@ def main(config_path: str = "config.json"):
         sys.exit(1)
 
     # --- Build LLM & Agent --------------------------------------------------
-    llm = build_llm(cfg["llm"])
+    brain_llm = build_llm(cfg["brain_llm"])
+    actor_llm = build_llm(cfg["actor_llm"])
     agent_cfg = cfg["agent"]
     controller = Controller()
 
     agent = Agent(
         task                    = agent_cfg["task"],
-        llm                     = llm,
+        brain_llm               = brain_llm,
+        actor_llm               = actor_llm,
         short_memory_len        = agent_cfg.get("short_memory_len", 5),
         controller              = controller,
         use_ui                  = agent_cfg.get("use_ui", False),

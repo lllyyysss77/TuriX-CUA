@@ -1,7 +1,14 @@
 {
   "logging_level": "DEBUG",
 
-  "llm": {
+  "brain_llm": {
+    "provider": "turix",
+    "model_name": "turix-model",
+    "api_key": "your_api_key_here",
+    "base_url": "https://llm.turixapi.io/v1" 
+  },
+
+  "actor_llm": {
     "provider": "turix",
     "model_name": "turix-model",
     "api_key": "your_api_key_here",
