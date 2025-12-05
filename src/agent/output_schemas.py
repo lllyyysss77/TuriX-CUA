@@ -159,18 +159,18 @@ class OutputSchemas:
 
     PLANNER_SCHEMA = {
         "anyOf": [
-            {                         # ← original branch: the plan
+            {
                 "type": "object",
                 "properties": {
                     "step_by_step_plan": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "minItems": 1                # optional but useful
+                        "minItems": 1
                     }
                 },
                 "required": ["step_by_step_plan"]
             },
-            {                         # ← refusal branch (Gemini‑safe)
+            {
                 "type": "string",
                 "enum": ["REFUSE TO MAKE PLAN"]
             }

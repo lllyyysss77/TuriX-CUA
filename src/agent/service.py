@@ -41,6 +41,7 @@ from src.agent.views import (
     AgentStepInfo,
     AgentBrain
 )
+from src.agent.planner_service import Planner
 from src.controller.registry.views import ActionModel
 from src.controller.service import Controller
 from src.mac.tree import MacUITreeBuilder
@@ -140,6 +141,7 @@ class Agent:
         self.wait_this_step = False
         self.agent_id = agent_id or str(uuid.uuid4())
         self.task = task
+        self.original_task = task
         self.resume = resume
         self.planner_llm = to_structured(planner_llm, OutputSchemas.PLANNER_RESPONSE_FORMAT, PlannerOutput)
         self.llm = to_structured(llm, OutputSchemas.AGENT_RESPONSE_FORMAT, AgentStepOutput)
@@ -163,6 +165,12 @@ class Agent:
         self.goal_action_memory = OrderedDict()
 
         self.last_goal = None
+        if self.planner_llm:
+            self.planner = Planner(
+                planner_llm=self.planner_llm,
+                task=self.task,
+                max_input_tokens=self.max_input_tokens,
+            )
         if not self.use_turix:
             self.system_prompt_class = system_prompt_class
         else:
@@ -375,7 +383,7 @@ class Agent:
             result = await self.controller.multi_act(
                 model_output.action,
                 self.mac_tree_builder,
-                action_valid=True # Set to True temporarily, halusination checker
+                action_valid=True # Set to True temporarily, hallucination checker
             )
             self._last_result = result
             if information_stored != 'None':
@@ -553,6 +561,8 @@ class Agent:
     async def run(self, max_steps: int = 100) -> AgentHistoryList:
         try:
             self._log_agent_run()
+            if self.planner_llm and not self.resume:
+                await self.edit()
             for step in range(max_steps):
                 if self.resume:
                     self.load_memory()
@@ -578,6 +588,25 @@ class Agent:
             logger.exception('Error running agent')
             raise
 
+    async def edit(self):
+        response = await self.planner.edit_task()
+        self._set_new_task(response)
+
+    PREFIX = "The overall user's task is: "
+    SUFFIX = "The step by step plan is: "
+
+    def _set_new_task(self, generated_plan: str) -> None:
+        """
+        Build the final task string:
+            "The overall plan is: <original task>\n\n<generated plan>"
+        and update every MessageManager in one go.
+        """
+        if generated_plan.startswith(self.PREFIX):
+            final_task = generated_plan
+        else:
+            final_task = f"{self.PREFIX}{self.original_task}\n{self.SUFFIX}\n{generated_plan}"
+        self.task = final_task
+        self.initiate_messages()
 
     def _too_many_failures(self) -> bool:
         if self.consecutive_failures >= self.max_failures:
