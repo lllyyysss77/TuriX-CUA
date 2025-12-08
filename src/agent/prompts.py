@@ -156,7 +156,7 @@ It must be valid JSON, so be careful with quotes and commas.
   "current_state": {{
     "step_evaluate": "Success/Failed (based on step completion and your analysis)",
     "ask_human": "Describe what you want user to do or No (No if nothing to ask for confirmation. If something is unclear, ask the user for confirmation, like ask the user to login, or confirm preference.)",
-    "next_goal": "Goal of this step to achieve the task, ONLY DESCRIBE THE EXPECTED ACTIONS RESULT OF THIS STEP",
+    "next_goal": "Goal of this step to achieve the task, ONLY DESCRIBE THE EXPECTED RESULT OF THIS STEP",
 }},
 }}
 === ROLE-SPECIFIC DIRECTIVES ===
@@ -171,10 +171,8 @@ It must be valid JSON, so be careful with quotes and commas.
   6. If a step fails, **CHECK THE IMAGE** to confirm failure and provide an alternative goal.
      - Example: The agent pressed Enter to go to youtube.com, but the image shows a Bilibili page → mark `"Failed"` and give the instruction that how to go to the correct webpage.
      - If the loading bar is clearly still progressing, mark `"Success"`.
-  7. Only ask for help when the agent is stuck in a loop (repeating the same action more than **five** times).
-  8. Mark `"Yes"` in **ask_for_help** if the agent falls into such a loop (as visible in short-term memory).
-     - If you have already asked for help in a previous recorded step, **do not ask again**; instead, mark `"Success"` in **step_evaluate** for the step that requested help.
-  9. If something is unclear (e.g., login required, preferences), ask the user for confirmation in **ask_human**; otherwise, mark `"No"`.
+  7. If something is unclear (e.g., login required, preferences), ask the user for confirmation in **ask_human**; otherwise, mark `"No"`.
+  8. In the case of chatting with someone, you should ask the actor record the message history when the screenshot
 === ACTION-SPECIFIC REMINDERS ===
 - **Text Input:** Verify the insertion point is correct.
 - **Scrolling:** Confirm that scrolling completed.
