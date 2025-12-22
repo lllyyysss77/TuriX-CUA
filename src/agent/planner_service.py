@@ -66,10 +66,6 @@ class Planner:
         fallback_queries = [
             "TuriX computer use agent capabilities",
             "AI agent automate computer tasks macOS",
-            "Twitter X DM outreach best practices software sales",
-            "Write persuasive AI software sales pitch example",
-            "Social selling strategies for SaaS on Twitter",
-            "TuriX case studies or customer success",
         ]
         if not self.search_llm:
             return fallback_queries
@@ -78,8 +74,7 @@ class Planner:
             prompt = SystemMessage(
                 content=(
                     "Generate 3-6 concise web search queries for background research. "
-                    "Cover: TuriX capabilities/value, AI computer-use agents, social selling for software (Twitter/X DMs), "
-                    "examples of persuasive outreach copy, and user persona analysis tips. "
+                    "Cover: TuriX capabilities/value, AI computer-use agents, "
                     "Keep each query under 12 words, prefer English, avoid copying the whole user task text, "
                     "and ensure the set is diverse (no near-duplicates). "
                     "Respond strictly as a JSON array of strings."
