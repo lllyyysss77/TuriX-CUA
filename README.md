@@ -6,6 +6,10 @@
 
 <p align="center"><strong>Talk to your computer, watch it work.</strong></p>
 
+<p align="center">
+  <a href="README.md">English</a> | <a href="README.zh-CN.md">中文</a>
+</p>
+
 ## 📞 Contact & Community
 
 Join our Discord community for support, discussions, and updates:
@@ -45,10 +49,9 @@ Prefer your own model? **Change in `config.json` and go.**
 
 **December 30, 2025** - 🎉 Significant update in Agent Archetecture. We introduce a multi-model archetecture in the multi-agent branch, releasing the stress from a single model to multiple models.
 
-**September 30, 2025** - 🎉 Exciting update! We've just released our latest AI model on the [TuriX API platform](https://turixapi.io), bringing enhanced performance, smarter reasoning, and seamless integration for even more powerful desktop automation. Developers and researchers, this is your cue—head over to the platform to access it now and elevate your workflows!
-
 **October 16, 2025** - 🚀 Big news for automation enthusiasts! TuriX now fully supports the cutting-edge **Qwen3-VL** vision-language model, empowering seamless PC automation across both **macOS** and **Windows**. This integration boosts task success rates by up to 15% on complex UI interactions (based on our internal benchmarks), making your desktop workflows smarter and faster than ever. Whether you're scripting daily routines or tackling intricate projects, Qwen3-VL's advanced multimodal reasoning brings unparalleled precision to the table.
 
+**September 30, 2025** - 🎉 Exciting update! We've just released our latest AI model on the [TuriX API platform](https://turixapi.io), bringing enhanced performance, smarter reasoning, and seamless integration for even more powerful desktop automation. Developers and researchers, this is your cue—head over to the platform to access it now and elevate your workflows!
 Ready to level up? Update your `config.json` and start automating—happy hacking! 🎉
 
 *Stay tuned to our [Discord](https://discord.gg/vkEYj4EV2n) for tips, user stories, and the next big drop.*
@@ -184,6 +187,16 @@ Edit API in `examples/config.json`:
    }
 ```
 
+For a local Ollama setup, use a vision-capable model and point to your Ollama server:
+```json
+"llm": {
+      "provider": "ollama",
+      "model_name": "llama3.2-vision",
+      "base_url": "http://localhost:11434"
+   }
+```
+Apply the same for `planner_llm` if you want it to use Ollama too.
+
 #### 4.3 Configure Custom Models (Optional)
 
 If you want to use other models not defined by the build_llm function in the main.py, you need to first define it, then setup the config.
@@ -196,7 +209,7 @@ if provider == "name_you_want":
             model="gpt-4.1-mini", api_key=api_key, temperature=0.3
         )
 ```
-Switch between ChatOpenAI, ChatGoogleGenerativeAI and ChatAnthropic base on your llm. Also change the model name.
+Switch between ChatOpenAI, ChatGoogleGenerativeAI, ChatAnthropic, or ChatOllama based on your llm. Also change the model name.
 
 #### 4.4 Start the Agent
 
