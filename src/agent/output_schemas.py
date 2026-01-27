@@ -150,9 +150,10 @@ class OutputSchemas:
                     "analysis": {
                         "type": "object",
                         "properties": {
-                            "analysis": {"type": "string"}
+                            "analysis": {"type": "string"},
+                            "sop_check": {"type": "string"}
                         },
-                        "required": ["analysis"]
+                        "required": ["analysis", "sop_check"]
                     },
                     "current_state": {
                         "type": "object",
