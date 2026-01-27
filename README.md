@@ -44,9 +44,9 @@ Prefer your own model? **Change in `config.json` and go.**
 
 ## 📰 Latest News
 
-**January 27, 2026** - 🎉 We released **Recoverable Memory Compression** and **Skills** in the `multi-agent` and `multi-agent-windows` branches. These features add more stable memory handling and reusable markdown playbooks for task planning.
+**January 27, 2026** - 🎉 We released **Recoverable Memory Compression** and **Skills** in the `main` (formerly `multi-agent`) and `multi-agent-windows` branches. These features add more stable memory handling and reusable markdown playbooks for task planning.
 
-**December 30, 2025** - 🎉 Significant update in Agent Archetecture. We introduce a multi-model archetecture in the multi-agent branch, releasing the stress from a single model to multiple models.
+**December 30, 2025** - 🎉 Significant update in Agent Archetecture. We introduce a multi-model archetecture in the `main` (formerly `multi-agent`) branch, releasing the stress from a single model to multiple models.
 
 **October 16, 2025** - 🚀 Big news for automation enthusiasts! TuriX now fully supports the cutting-edge **Qwen3-VL** vision-language model, empowering seamless PC automation across both **macOS** and **Windows**. This integration boosts task success rates by up to 15% on complex UI interactions (based on our internal benchmarks), making your desktop workflows smarter and faster than ever. Whether you're scripting daily routines or tackling intricate projects, Qwen3-VL's advanced multimodal reasoning brings unparalleled precision to the table.
 
@@ -112,11 +112,13 @@ For more details, check our [report](https://turix.ai/technical-report/).
 
 > **We never collect data**—install, grant permissions, and hack away.
 
-> **0. Windows Users**: Switch to the `windows` branch for Windows-specific setup and installation instructions.
+> **0. Windows Users**: Switch to the `multi-agent-windows` branch for Windows-specific setup and installation instructions.
 >
 > ```bash
 > git checkout multi-agent-windows
 > ```
+>
+> **0. macOS Legacy Users**: For the previous single-model macOS setup, switch to the `mac_legacy` branch.
 
 
 ### 1. Download the App
@@ -179,7 +181,7 @@ Edit task in `examples/config.json`:
 Get API now with $20 credit from our [official web page](https://turix.ai/api-platform/).
 Login to our website and the key is at the bottom.
 
-In this multi-agent branch, you need to set the brain, actor, and memory models. It only supports mac for now. If you enable planning
+In this main (multi-agent) branch, you need to set the brain, actor, and memory models. It only supports mac for now. If you enable planning
 (`agent.use_plan: true`), you also need to set the planner model.
 We strongly recommand you to set the turix-actor model as the actor. The brain can be any VLMs you like, we provide qwen3vl in out platform. You can switch to Gemini3 pro if 
 you like.
@@ -328,7 +330,7 @@ For bug reports and feature requests, please [open an issue](https://github.com/
 | **2025 Q4** | **✅ Support Gemini-3-pro model** | Run with any compatible vision language models |
 | **2025 Q4** | **✅ Planner** | Understands user intent and makes step-by-step plans to complete tasks |
 | **2025 Q4** | **✅ Multi-Agent Architecture** | Evaluate and guide each step in working |
-| **2025 Q4** | **✅ Duckduckgo Integration** | Speed up the information gathering process, for smarter planning (multi-agent branch) |
+| **2025 Q4** | **✅ Duckduckgo Integration** | Speed up the information gathering process, for smarter planning (now on main) |
 | **2026 Q1** | **✅ Ollama Support** | Support the Ollama Qwen3vl models |
 | **2026 Q1** | **✅ Recoverable Memory Compression** | Advance memory management mechanism to stabelize performance (Commited beta version) |
 | **2026 Q1** | **✅ Skills** | Stablize the agent workflow. |
