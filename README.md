@@ -6,10 +6,6 @@
 
 <p align="center"><strong>Talk to your computer, watch it work.</strong></p>
 
-<p align="center">
-  <a href="README.md">English</a> | <a href="README.zh-CN.md">中文</a>
-</p>
-
 ## 📞 Contact & Community
 
 Join our Discord community for support, discussions, and updates:
