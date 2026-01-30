@@ -29,6 +29,7 @@ TuriX 让你的强大 AI 模型能在桌面上真正动手操作。
 
 ## 目录
 - [📞 联系方式与社区](#contact-community)
+- [🤖 ClawDBot 技能](#clawdbot-skill)
 - [📰 最新动态](#latest-news)
 - [🖼️ 演示](#demos)
 - [✨ 关键特性](#key-features)
@@ -46,9 +47,21 @@ TuriX 让你的强大 AI 模型能在桌面上真正动手操作。
 
 ---
 
+## <a id="clawdbot-skill"></a>🤖 ClawDBot 技能
+
+通过 ClawDBot 使用 TuriX 的 ClawHub Skills：  
+https://clawdhub.com/Tongyu-Yan/turix-computer-use  
+这让 ClawDBot 可以调用 TuriX，作为你的桌面操作 Agent。
+
+---
+
 ## <a id="latest-news"></a>📰 最新动态
 
+**2026 年 1 月 30 日** - 🧩 我们在 ClawHub 发布了 **TuriX ClawDBot 技能**。你现在可以使用 ClawDBot 调用 TuriX 来完成桌面自动化任务。
+
 **2026 年 1 月 27 日 — v0.3** - 🎉 TuriX v0.3 已在 main 分支发布！本次更新带来 DuckDuckGo 搜索、Ollama 支持、先进的可恢复内存压缩，以及 Skills（技能手册），让规划更智能、记忆更稳健、工作流更可复用。欢迎更多用户体验并分享反馈，我们会持续推进平台进化。
+
+**2026 年 1 月 27 日** - 🎉 我们在 `multi-agent` 与 `multi-agent-windows` 分支发布了 **可恢复的内存压缩** 和 **Skills**。这两项功能带来更稳定的记忆管理与可复用的 Markdown 技能手册，用于规划与执行任务。
 
 **2026 年 1 月 27 日** - 🎉 我们在 `main`（原 `multi-agent`）与 `multi-agent-windows` 分支发布了 **可恢复的内存压缩** 和 **Skills**。这两项功能带来更稳定的记忆管理与可复用的 Markdown 技能手册，用于规划与执行任务。
 

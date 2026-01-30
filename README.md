@@ -25,6 +25,7 @@ Prefer your own model? **Change in `config.json` and go.**
 
 ## Table of Contents
 - [📞 Contact & Community](#-contact--community)
+- [🤖 ClawDBot Skill](#-clawdbot-skill)
 - [📰 Latest News](#-latest-news)
 - [🖼️ Demos](#️-demos)
 - [✨ Key Features](#-key-features)
@@ -42,9 +43,21 @@ Prefer your own model? **Change in `config.json` and go.**
 
 ---
 
+## 🤖 ClawDBot Skill
+
+Use TuriX via ClawDBot with our published skill on ClawHub:  
+https://clawdhub.com/Tongyu-Yan/turix-computer-use  
+This lets ClawDBot call TuriX so it can act as your desktop agent.
+
+---
+
 ## 📰 Latest News
 
+**January 30, 2026** - 🧩 We published the **TuriX ClawDBot Skill** on ClawHub. You can now use ClawDBot to call TuriX and automate desktop tasks.
+
 **January 27, 2026 — v0.3** - 🎉 TuriX v0.3 is now live on the main branch! This release brings DuckDuckGo search, Ollama support, advanced recoverable memory compression, and Skills—unlocking smarter planning, more resilient memory, and reusable workflows for desktop automation. We’re excited to see more users try it out and share feedback as we keep pushing the platform forward.
+
+**January 27, 2026** - 🎉 We released **Recoverable Memory Compression** and **Skills** in the `multi-agent` and `multi-agent-windows` branches. These features add more stable memory handling and reusable markdown playbooks for task planning.
 
 **January 27, 2026** - 🎉 We released **Recoverable Memory Compression** and **Skills** in the `main` (formerly `multi-agent`) and `multi-agent-windows` branches. These features add more stable memory handling and reusable markdown playbooks for task planning.
 
