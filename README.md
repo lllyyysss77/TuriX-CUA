@@ -49,6 +49,9 @@ Use TuriX via ClawDBot with our published skill on ClawHub:
 https://clawdhub.com/Tongyu-Yan/turix-computer-use  
 This lets ClawDBot call TuriX so it can act as your desktop agent.
 
+Local OpenCLaw skill (macOS): this repo also includes a ready-to-use skill package in `OpenCLaw_TuriX_skill/` (`SKILL.md` + `scripts/run_turix.sh`).  
+Copy it into your ClawDBot local skills folder (for example: `clawd/skills/local/turix-mac/`) and follow `OpenCLaw_TuriX_skill/README.md` for setup and permissions.
+
 ---
 
 ## 📰 Latest News

@@ -53,6 +53,9 @@ TuriX 让你的强大 AI 模型能在桌面上真正动手操作。
 https://clawdhub.com/Tongyu-Yan/turix-computer-use  
 这让 ClawDBot 可以调用 TuriX，作为你的桌面操作 Agent。
 
+本仓库还提供 OpenCLaw 的本地技能包（macOS），位于 `OpenCLaw_TuriX_skill/`（包含 `SKILL.md` 与 `scripts/run_turix.sh`）。  
+将其复制到你的 ClawDBot 本地技能目录（例如：`clawd/skills/local/turix-mac/`），并参考 `OpenCLaw_TuriX_skill/README.md` 完成安装与权限设置。
+
 ---
 
 ## <a id="latest-news"></a>📰 最新动态
