@@ -20,6 +20,8 @@
    </a>
 </p>
 
+如果对我们的项目感兴趣，也欢迎加入我们的微信群![QRcode](https://github.com/Dennisyk348/QRcode/blob/main/QRcode_0126.jpg)
+
 或通过邮件联系我们：contact@turix.ai
 
 TuriX 让你的强大 AI 模型能在桌面上真正动手操作。
