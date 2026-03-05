@@ -21,7 +21,7 @@
 </p>
 
 如果对我们的项目感兴趣，也欢迎加入我们的微信群![QRcode](https://github.com/Dennisyk348/QRcode/blob/main/QRcode_0304.jpg)
-如微信群无法加入，请直接添加官方小助理。[QRcode](https://github.com/Dennisyk348/QRcode/blob/main/QRcode_turix.jpg)
+如微信群无法加入，请直接添加官方小助理。[turix_QRcode](https://github.com/Dennisyk348/QRcode/blob/main/QRcode_turix.jpg)
 
 或通过邮件联系我们：contact@turix.ai
 
