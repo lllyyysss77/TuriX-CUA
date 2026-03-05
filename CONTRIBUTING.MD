@@ -330,4 +330,7 @@ This project follows a code of conduct. Please be respectful and constructive in
 
 ---
 
+## Contributors
+* [rayL-K](https://github.com/rayL-K)
+
 Thank you for contributing to TuriX! Your contributions help make conputer automation more accessible and powerful for everyone.
