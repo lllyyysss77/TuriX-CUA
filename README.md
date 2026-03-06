@@ -215,13 +215,13 @@ Login to our website and the key is at the bottom.
 
 In this main (multi-agent) branch, you need to set the brain, actor, and memory models. It only supports mac for now. If you enable planning
 (`agent.use_plan: true`), you also need to set the planner model.
-We strongly recommand you to set the turix-actor model as the actor. The brain can be any VLMs you like, we provide qwen3vl in out platform. Gemini-3-pro is tested to be smartest, and Gemini-3-flash is fast and smart enough for most of the tasks. Since turix-brain model is updating now, we recommend you to use gemini in our API platform.
+We strongly recommand you to set the turix-actor model as the actor. The brain can be any VLMs you like, we provide qwen3.5vl in our platform. Gemini-3-pro is tested to be smartest, and Gemini-3-flash is fast and smart enough for most of the tasks. 
 
 Edit API in `examples/config.json`:
 ```json
 "brain_llm": {
       "provider": "turix",
-      "model_name": "gemini-3-flash-preview",
+      "model_name": "turix-brain",
       "api_key": "YOUR_API_KEY",
       "base_url": "https://turixapi.io/v1"
    },
@@ -233,13 +233,13 @@ Edit API in `examples/config.json`:
    },
 "memory_llm": {
       "provider": "turix",
-      "model_name": "gemini-3-flash-preview",
+      "model_name": "turix-brain",
       "api_key": "YOUR_API_KEY",
       "base_url": "https://turixapi.io/v1"
    },
 "planner_llm": {
       "provider": "turix",
-      "model_name": "gemini-3-flash-preview",
+      "model_name": "turix-brain",
       "api_key": "YOUR_API_KEY",
       "base_url": "https://turixapi.io/v1"
    }
