@@ -64,6 +64,11 @@ You can also instruct OpenClaw directly: read `OpenCLaw_TuriX_skill/README.md` f
 
 ## 📰 Latest News
 
+**March 9, 2026** - Added a new **OpenClaw Flash/Fast Mode skill for macOS** on branch `mac_legacy`. If you want to use this faster, lighter setup, switch to that branch first:
+```bash
+git checkout mac_legacy
+```
+
 **March 5, 2026** - Updated the **Windows OpenClaw local skill** on branch `multi-agent-windows`. This update adds a user-invocable `turix` skill alias, direct dispatch without requiring a Turix sub-session, branch-safe pre-flight checks in `run_turix.ps1`, and the new agent interface file `OpenCLaw_TuriX_skill/agents/openai.yaml`.
 
 **January 30, 2026** - 🧩 We published the **TuriX OpenClaw Skill** on ClawHub: https://clawhub.ai/Tongyu-Yan/turix-cua. You can now use OpenClaw to call TuriX and automate desktop tasks.
