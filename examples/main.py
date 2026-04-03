@@ -379,6 +379,11 @@ def main(config_path: str = "config.json"):
     save_planner_conversation_path = resolve_artifact_path(
         agent_cfg.get("save_planner_conversation_path"), output_dir
     )
+    memory_budget_tokens = agent_cfg.get("memory_budget_tokens", agent_cfg.get("memory_budget", 500))
+    summary_memory_budget_tokens = agent_cfg.get(
+        "summary_memory_budget_tokens",
+        agent_cfg.get("summary_memory_budget"),
+    )
 
     agent = Agent(
         task                    = agent_cfg["task"],
@@ -386,8 +391,8 @@ def main(config_path: str = "config.json"):
         actor_llm               = actor_llm,
         planner_llm             = planner_llm,
         memory_llm              = memory_llm,
-        memory_budget           = agent_cfg.get("memory_budget", 500),
-        summary_memory_budget   = agent_cfg.get("summary_memory_budget"),
+        memory_budget           = memory_budget_tokens,
+        summary_memory_budget   = summary_memory_budget_tokens,
         controller              = controller,
         use_ui                  = agent_cfg.get("use_ui", False),
         use_search              = agent_cfg.get("use_search", True),
