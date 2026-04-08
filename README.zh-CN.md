@@ -57,20 +57,27 @@ TuriX 让你的强大 AI 模型能在桌面上真正动手操作。
 
 ## <a id="openclaw-skill"></a>🤖 OpenClaw 技能
 
-通过 OpenClaw 使用 TuriX 的 ClawHub Skills：  
-https://clawhub.ai/Tongyu-Yan/turix-cua  
-这让 OpenClaw 可以调用 TuriX，作为你的桌面操作 Agent。
+通过 OpenClaw 使用 TuriX 的 ClawHub 技能：  
+https://clawhub.ai/Tongyu-Yan/turix-cua
 
-本仓库还提供 OpenCLaw 的本地技能包（macOS），位于 `OpenCLaw_TuriX_skill/`（包含 `SKILL.md` 与 `scripts/run_turix.sh`）。  
-将其复制到你的 OpenClaw 本地技能目录（例如：`clawd/skills/local/turix-mac/`），并参考 `OpenCLaw_TuriX_skill/README.md` 完成安装与权限设置。
+本仓库也提供本地 OpenClaw 技能包（`OpenCLaw_TuriX_skill/`）：
+- `main` 分支提供 macOS 版本（`SKILL.md` + `scripts/run_turix.sh`）
+- `multi-agent-windows` 分支提供 Windows 版本（`SKILL.md` + `scripts/run_turix.ps1` + `agents/openai.yaml`）
 
-OpenClaw 的 Windows 本地技能包位于 `multi-agent-windows` 分支的 `OpenCLaw_TuriX_skill/`，包含 `SKILL.md`、`scripts/run_turix.ps1` 与 `agents/openai.yaml`。  
-该更新支持在当前 OpenClaw 会话中通过 `turix`（别名 `turix-win`）直接分发任务，并在 `run_turix.ps1` 中增加了预检查（强制分支 `multi-agent-windows`、conda/config 校验、`--dry-run` 支持）。
-你也可以直接让 OpenClaw 先阅读 `OpenCLaw_TuriX_skill/README.md`，再按文档安装并配置 TuriX。
+安装与权限配置请参考 `OpenCLaw_TuriX_skill/README.md`。
 
 ---
 
 ## <a id="latest-news"></a>📰 最新动态
+
+**2026 年 4 月 8 日** - 🚀 重磅发布 **TuriX SuperPower 3.0.0-alpha**（macOS Apple Silicon）：  
+[dmg安装包（仅支持Mac）](https://turix-staging-apollo.sfo3.cdn.digitaloceanspaces.com/turix-app/desktop/releases/Turix-SuperPower_3.0.0-alpha_aarch64.dmg)
+
+这是我们新一代一体化工作应用，把 **TuriX 的 CUA 能力与 CLI 能力**深度融合，并新增两大能力：
+- **TuriX-work**：面向办公场景的任务执行与流程编排
+- **TuriX-code**：面向开发场景的编码、自动化与工程执行
+
+从写代码到处理办公事务，你可以在同一条工作流里同时获得 CLI 的执行效率与 GUI 的闭环操作能力。
 
 **2026 年 3 月 16 日** - 🐧 **Linux 支持已上线**，位于 `multi-agent-linux` 分支。如果你要在 Linux（如 Ubuntu）上运行 TuriX，请先切换分支：
 ```bash
@@ -82,21 +89,9 @@ git checkout multi-agent-linux
 git checkout mac_legacy
 ```
 
-**2026 年 3 月 5 日** - 我们更新了 `multi-agent-windows` 分支上的 **OpenClaw Windows 本地技能包**。本次更新加入可直接调用的 `turix` 技能别名、无需 Turix 子会话的直接分发机制、`run_turix.ps1` 的分支安全预检查，以及新的代理接口文件 `OpenCLaw_TuriX_skill/agents/openai.yaml`。
+**2026 年 3 月 5 日** - 我们更新了 `multi-agent-windows` 分支上的 **OpenClaw Windows 本地技能包**，支持更直接的任务分发、更安全的预检查，以及新的 `OpenCLaw_TuriX_skill/agents/openai.yaml` 接口文件。
 
-**2026 年 1 月 30 日** - 🧩 我们在 ClawHub 发布了 **TuriX OpenClaw 技能**：https://clawhub.ai/Tongyu-Yan/turix-cua。你现在可以使用 OpenClaw 调用 TuriX 来完成桌面自动化任务。
-
-**2026 年 1 月 27 日 — v0.3** - 🎉 TuriX v0.3 已在 main 分支发布！本次更新带来 DuckDuckGo 搜索、Ollama 支持、先进的可恢复内存压缩，以及 Skills（技能手册），让规划更智能、记忆更稳健、工作流更可复用。欢迎更多用户体验并分享反馈，我们会持续推进平台进化。
-
-**2026 年 1 月 27 日** - 🎉 我们在 `multi-agent` 与 `multi-agent-windows` 分支发布了 **可恢复的内存压缩** 和 **Skills**。这两项功能带来更稳定的记忆管理与可复用的 Markdown 技能手册，用于规划与执行任务。
-
-**2026 年 1 月 27 日** - 🎉 我们在 `main`（原 `multi-agent`）与 `multi-agent-windows` 分支发布了 **可恢复的内存压缩** 和 **Skills**。这两项功能带来更稳定的记忆管理与可复用的 Markdown 技能手册，用于规划与执行任务。
-
-**2025 年 12 月 30 日** - 🎉Agent架构迎来重要更新。我们在 `main`（原 `multi-agent`）分支引入多模型架构，将单一模型的压力分散到多个模型上，以减轻注意力机制的负担。
-
-**2025 年 10 月 16 日** - 🚀 自动化爱好者的重大消息！TuriX 现已全面支持前沿的 **Qwen3-VL** 视觉语言模型，赋能 **macOS** 与 **Windows** 的顺畅自动化。基于我们的内部基准，该集成在复杂 UI 交互上可将成功率提升多达 15%。无论你是在脚本化日常流程还是处理复杂项目，Qwen3-VL 的多模态推理都能带来前所未有的精度。
-
-**2025 年 9 月 30 日** - 🎉 激动人心的更新！我们在 [TuriX API 平台](https://turixapi.io) 发布了最新 AI 模型，带来更强性能、更聪明的推理以及更顺滑的集成，帮助你实现更强大的桌面自动化。开发者和研究者，现在就去平台获取并升级你的工作流！
+**更早更新（2026 年 1 月及之前）** - 我们已完成 v0.3 发布（DuckDuckGo、Ollama、可恢复内存压缩、Skills）、发布 TuriX OpenClaw 技能、升级多模型架构，并上线包括 Qwen3-VL 支持与 TuriX API 模型升级在内的多项能力增强。
 
 准备好体验了吗？更新你的 `config.json` 并开始自动化吧——祝你玩得开心！🎉
 
@@ -105,6 +100,11 @@ git checkout mac_legacy
 ---
 
 ## <a id="demos"></a>🖼️ 演示
+<p align="center"><strong>TuriX SuperPower App 演示</strong></p>
+<p align="center">
+   <img src="./doc/app_demo.jpg" width="1600" alt="TuriX SuperPower 应用演示">
+</p>
+
 <h3 align="center">MacOS 演示</h3>
 <p align="center"><strong>预订机票、酒店和 Uber。</strong></p>
 <p align="center">

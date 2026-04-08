@@ -49,20 +49,27 @@ Prefer your own model? **Change in `config.json` and go.**
 
 ## 🤖 OpenClaw Skill
 
-Use TuriX via OpenClaw with our published skill on ClawHub:  
-https://clawhub.ai/Tongyu-Yan/turix-cua  
-This lets OpenClaw call TuriX so it can act as your desktop agent.
+Use TuriX via OpenClaw with our published ClawHub skill:  
+https://clawhub.ai/Tongyu-Yan/turix-cua
 
-Local OpenCLaw skill (macOS): this repo also includes a ready-to-use skill package in `OpenCLaw_TuriX_skill/` (`SKILL.md` + `scripts/run_turix.sh`).  
-Copy it into your OpenClaw local skills folder (for example: `clawd/skills/local/turix-mac/`) and follow `OpenCLaw_TuriX_skill/README.md` for setup and permissions.
+This repo also includes local OpenClaw skill packages in `OpenCLaw_TuriX_skill/`:
+- macOS package in `main` (`SKILL.md` + `scripts/run_turix.sh`)
+- Windows package in `multi-agent-windows` (`SKILL.md` + `scripts/run_turix.ps1` + `agents/openai.yaml`)
 
-Local OpenClaw skill (Windows): on branch `multi-agent-windows`, `OpenCLaw_TuriX_skill/` is updated for Windows with `SKILL.md`, `scripts/run_turix.ps1`, and `agents/openai.yaml`.  
-This update adds direct dispatch via `turix` (alias `turix-win`) in the current OpenClaw session, plus pre-flight checks in `run_turix.ps1` (required branch `multi-agent-windows`, conda/config validation, and `--dry-run` support).
-You can also instruct OpenClaw directly: read `OpenCLaw_TuriX_skill/README.md` first, then install and configure TuriX.
+For installation and permissions, follow `OpenCLaw_TuriX_skill/README.md`.
 
 ---
 
 ## 📰 Latest News
+
+**April 8, 2026** - 🚀 Introducing **TuriX SuperPower 3.0.0-alpha** for macOS (Apple Silicon):  
+[Download dmg(ONLY for mac)](https://turix-staging-apollo.sfo3.cdn.digitaloceanspaces.com/turix-app/desktop/releases/Turix-SuperPower_3.0.0-alpha_aarch64.dmg)
+
+This is our all-in-one productivity app that combines **TuriX CUA + CLI** in one workflow, and adds two new capabilities:
+- **TuriX-work** for everyday office execution and task orchestration
+- **TuriX-code** for coding, automation, and engineering tasks
+
+From writing code to handling office tasks, you can execute with CLI precision and close the loop through GUI actions in one continuous flow.
 
 **March 16, 2026** - 🐧 **Linux support is now available** on branch `multi-agent-linux`. If you want to run TuriX on Linux (for example Ubuntu), switch to that branch first:
 ```bash
@@ -74,21 +81,9 @@ git checkout multi-agent-linux
 git checkout mac_legacy
 ```
 
-**March 5, 2026** - Updated the **Windows OpenClaw local skill** on branch `multi-agent-windows`. This update adds a user-invocable `turix` skill alias, direct dispatch without requiring a Turix sub-session, branch-safe pre-flight checks in `run_turix.ps1`, and the new agent interface file `OpenCLaw_TuriX_skill/agents/openai.yaml`.
+**March 5, 2026** - Updated the **Windows OpenClaw local skill** on branch `multi-agent-windows` with direct dispatch, safer pre-flight checks, and the new `OpenCLaw_TuriX_skill/agents/openai.yaml`.
 
-**January 30, 2026** - 🧩 We published the **TuriX OpenClaw Skill** on ClawHub: https://clawhub.ai/Tongyu-Yan/turix-cua. You can now use OpenClaw to call TuriX and automate desktop tasks.
-
-**January 27, 2026 — v0.3** - 🎉 TuriX v0.3 is now live on the main branch! This release brings DuckDuckGo search, Ollama support, advanced recoverable memory compression, and Skills—unlocking smarter planning, more resilient memory, and reusable workflows for desktop automation. We’re excited to see more users try it out and share feedback as we keep pushing the platform forward.
-
-**January 27, 2026** - 🎉 We released **Recoverable Memory Compression** and **Skills** in the `multi-agent` and `multi-agent-windows` branches. These features add more stable memory handling and reusable markdown playbooks for task planning.
-
-**January 27, 2026** - 🎉 We released **Recoverable Memory Compression** and **Skills** in the `main` (formerly `multi-agent`) and `multi-agent-windows` branches. These features add more stable memory handling and reusable markdown playbooks for task planning.
-
-**December 30, 2025** - 🎉 Significant update in Agent Archetecture. We introduce a multi-model archetecture in the `main` (formerly `multi-agent`) branch, releasing the stress from a single model to multiple models.
-
-**October 16, 2025** - 🚀 Big news for automation enthusiasts! TuriX now fully supports the cutting-edge **Qwen3-VL** vision-language model, empowering seamless PC automation across both **macOS** and **Windows**. This integration boosts task success rates by up to 15% on complex UI interactions (based on our internal benchmarks), making your desktop workflows smarter and faster than ever. Whether you're scripting daily routines or tackling intricate projects, Qwen3-VL's advanced multimodal reasoning brings unparalleled precision to the table.
-
-**September 30, 2025** - 🎉 Exciting update! We've just released our latest AI model on the [TuriX API platform](https://turixapi.io), bringing enhanced performance, smarter reasoning, and seamless integration for even more powerful desktop automation. Developers and researchers, this is your cue—head over to the platform to access it now and elevate your workflows!
+**Earlier updates (Jan 2026 and before)** - We shipped v0.3 (DuckDuckGo, Ollama, recoverable memory compression, Skills), published the TuriX OpenClaw skill on ClawHub, upgraded the core architecture to multi-model, and rolled out major model capability improvements including Qwen3-VL support and TuriX API model upgrades.
 
 Ready to level up? Update your `config.json` and start automating—happy hacking! 🎉
 
@@ -97,6 +92,11 @@ Ready to level up? Update your `config.json` and start automating—happy hackin
 ---
 
 ## 🖼️ Demos
+<p align="center"><strong>TuriX SuperPower App Demo</strong></p>
+<p align="center">
+   <img src="./doc/app_demo.jpg" width="1600" alt="TuriX SuperPower app demo">
+</p>
+
 <h3 align="center">MacOS Demo</h3>
 <p align="center"><strong>Book a flight, hotel and uber.</strong></p>
 <p align="center">
