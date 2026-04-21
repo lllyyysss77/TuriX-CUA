@@ -241,7 +241,7 @@ osascript -e 'tell application "Safari" to do JavaScript "alert("Triggering acce
 
 #### 4.2 编辑 API 配置
 
-从我们的[官网](https://turix.ai/api-platform/)获取 API，现在可获 $20 额度。
+从我们的[官网](https://turix.ai/api-platform/)获取 API。
 登录网站，密钥在页面底部。
 
 在这个 main（multi-agent）分支，你需要同时配置 brain、actor 和 memory 模型；目前该特性仅支持苹果电脑。如果开启规划（`agent.use_plan: true`），还需要配置 planner 模型。
