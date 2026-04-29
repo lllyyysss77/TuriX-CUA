@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/turixai-turix-cua-badge.png)](https://mseep.ai/app/turixai-turix-cua)
+
 <p align="center">
    <img src="./doc/LogoHFitted.svg" width="1600" alt="TuriX logo">
 </p>
