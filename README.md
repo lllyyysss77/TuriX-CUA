@@ -1,5 +1,3 @@
-[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/turixai-turix-cua-badge.png)](https://mseep.ai/app/turixai-turix-cua)
-
 <p align="center">
    <img src="./doc/LogoHFitted.svg" width="1600" alt="TuriX logo">
 </p>
@@ -363,6 +361,8 @@ Notes:
 - Keep the same `task` when resuming.
 - Resume only works if prior memory exists at `src/agent/temp_files/<agent_id>/memory.jsonl`.
 - To start fresh, set `resume` to `false`, change `agent_id`, or delete `src/agent/temp_files/<agent_id>`.
+
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/turixai-turix-cua-badge.png)](https://mseep.ai/app/turixai-turix-cua)
 
 ## 🤝 Contributing
 
